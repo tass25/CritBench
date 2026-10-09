@@ -1,0 +1,93 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+*.so
+*.whl
+sdist/
+
+# ===== Virtual environments =====
+.venv/
+venv/
+env/
+.conda/
+
+# ===== Testing & coverage =====
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# ===== Linting & type checking =====
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+*.sublime-workspace
+*.sublime-project
+
+# ===== OS junk =====
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ===== Environment & secrets =====
+.env
+.env.*
+*.pem
+*.key
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Data files (large / binary — download, don't track) =====
+data/raw/
+data/processed/
+results/runs/
+*.parquet
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# ===== EEG / neuroimaging raw formats =====
+*.edf
+*.bdf
+*.vhdr
+*.vmrk
+*.dat
+*.fif
+*.set
+*.fdt
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== Docker =====
+docker-compose.override.yml
+
+# ===== Local AI / agent tooling (not part of the project) =====
+.agents/

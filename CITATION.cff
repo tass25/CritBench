@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: CriticalityLens
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - name: tass25
+repository-code: "https://github.com/tass25/CritBench"
+license: MIT
+version: 0.0.1

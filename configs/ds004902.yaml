@@ -1,0 +1,17 @@
+# ds004902 dataset configuration
+# 71 participants, 61 channels, 500 Hz
+# Normal sleep versus sleep deprivation
+dataset: ds004902
+sampling_rate_hz: 500
+epoch_length_s: 30
+min_continuous_s: 180
+preferred_continuous_s: 300
+mains_frequency_hz: 50
+bands:
+  theta: [4, 8]
+  alpha: [8, 13]
+  beta: [13, 30]
+  broadband: [1, 45]
+  narrowband_gamma: [30, 45]
+reference: average
+seed: 42

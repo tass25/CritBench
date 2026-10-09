@@ -1,0 +1,83 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "criticalitylens"
+version = "0.0.1"
+description = "Criticality measures for neural time series."
+requires-python = ">=3.10"
+license = {text = "MIT"}
+readme = "README.md"
+authors = [
+    {name = "tass25"},
+]
+keywords = ["neuroscience", "criticality", "EEG", "DFA", "avalanche"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "mne>=1.5",
+    "antropy>=0.1.6",
+    "fooof>=1.1",
+    "powerlaw>=1.5",
+    "statsmodels>=0.14",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "pyyaml>=6.0",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "hypothesis>=6.82",
+    "mypy>=1.5",
+    "ruff>=0.1",
+    "pip-audit>=2.6",
+    "bandit>=1.7",
+]
+
+[project.scripts]
+cl = "criticalitylens.cli:main"
+
+[project.urls]
+Repository = "https://github.com/tass25/CritBench"
+
+[tool.mypy]
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "S", "B", "A", "C4", "PT", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "benchmark: performance benchmarks",
+]
+
+[tool.coverage.run]
+source = ["src/criticalitylens"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true

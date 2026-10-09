@@ -1,0 +1,7 @@
+# S1 branching-process simulation configuration
+simulation: branching
+branching_parameters: [0.70, 0.80, 0.90, 0.95, 0.98, 0.99, 1.00]
+sampling_rate_hz: 250
+n_channels: 64
+synaptic_kernel_ms: 10
+seed: 42

@@ -1,0 +1,6 @@
+# S2 factorial dissociation simulation configuration
+simulation: modulated_oscillation
+hurst_exponents: [0.5, 0.6, 0.7, 0.8, 0.9]
+noise_exponents: [0.5, 1.0, 1.5, 2.0, 2.5]
+seeds_per_cell: 50
+seed: 42
