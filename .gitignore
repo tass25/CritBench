@@ -1,79 +1,131 @@
-# ===== Python =====
+# ==============================================================================
+# CriticalityLens / CritBench — Production .gitignore
+# ==============================================================================
+
+# ===== Python Bytecode & Compilation =====
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyo
-*.egg-info/
-*.egg
-.eggs/
-dist/
-build/
+*.pyd
 *.so
-*.whl
-sdist/
+*.dylib
+*.dll
 
-# ===== Virtual environments =====
+# ===== Distribution, Packaging & Build =====
+build/
+dist/
+sdist/
+wheelhouse/
+*.egg
+*.egg-info/
+.eggs/
+*.whl
+*.manifest
+*.spec
+
+# ===== Virtual Environments =====
 .venv/
 venv/
 env/
+ENV/
 .conda/
+env.bak/
+venv.bak/
+pip-wheel-metadata/
 
-# ===== Testing & coverage =====
+# ===== Testing, Coverage & Benchmarking =====
 .pytest_cache/
 .coverage
 .coverage.*
 htmlcov/
 coverage.xml
 *.cover
+.tox/
+.nox/
+.hypothesis/
+.benchmarks/
+.profiling/
+*.prof
+*.pstats
+*.cprofile
 
-# ===== Linting & type checking =====
+# ===== Static Analysis, Linting & Type Checking =====
 .mypy_cache/
 .ruff_cache/
 .dmypy.json
 dmypy.json
+.pyre/
+.pytype/
 
-# ===== IDE / Editor =====
+# ===== IDEs, Text Editors & Operating System =====
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+*.bak
+*.orig
 .project
 .settings/
 .classpath
 *.sublime-workspace
 *.sublime-project
-
-# ===== OS junk =====
 .DS_Store
 Thumbs.db
 Desktop.ini
 ehthumbs.db
 $RECYCLE.BIN/
 
-# ===== Environment & secrets =====
+# ===== Environment Variables, Secrets & Keys =====
 .env
 .env.*
+!.env.example
 *.pem
 *.key
+*.cert
+*.crt
+credentials.json
+token.json
+secrets.yaml
+secrets.json
 
-# ===== Logs =====
+# ===== Logs & Temporary Artifacts =====
 *.log
 logs/
+tmp/
+temp/
+scratch/
+*.tmp
 
-# ===== Data files (large / binary — download, don't track) =====
+# ===== Jupyter Notebooks & Documentation Builds =====
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+docs/_build/
+_build/
+site/
+
+# ===== Raw & Processed Scientific Datasets =====
+# Downloaded / derived data should never be committed to git.
+# Manifests and folder placeholders (.gitkeep) are tracked.
+data/*
+!data/manifests/
+!data/**/.gitkeep
 data/raw/
 data/processed/
-results/runs/
-*.parquet
-*.npy
-*.npz
-*.h5
-*.hdf5
-*.pkl
-*.pickle
+data/cache/
+data/interim/
+data/downloads/
 
-# ===== EEG / neuroimaging raw formats =====
+# ===== Results, Checkpoints & Simulation Runs =====
+# Simulation runs, heavy figures, and intermediate matrices are generated via scripts.
+results/*
+!results/**/.gitkeep
+results/runs/
+results/cache/
+results/scratch/
+
+# ===== Neuroimaging, EEG & Binary Data Formats =====
 *.edf
 *.bdf
 *.vhdr
@@ -82,12 +134,48 @@ results/runs/
 *.fif
 *.set
 *.fdt
+*.cnt
+*.mff
+*.eeg
+*.nii
+*.nii.gz
 
-# ===== Jupyter =====
-.ipynb_checkpoints/
+# ===== Scientific Arrays, Tables & Model Checkpoints =====
+*.parquet
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.feather
+*.arrow
+*.mat
+*.zarr/
+*.nc
+*.sqlite
+*.sqlite3
+*.db
 
-# ===== Docker =====
+# ===== Compressed Archives =====
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.bz2
+*.xz
+
+# ===== Docker Local Overrides =====
 docker-compose.override.yml
 
-# ===== Local AI / agent tooling (not part of the project) =====
+# ===== Agent / Local LLM Tooling & Scaffolding =====
+# Internal agent configs, workspaces, and logs must remain local
 .agents/
+.gemini/
+.claude/
+.cursor/
+.copilot/
+.windsurf/
+.aider*
