@@ -1,0 +1,1 @@
+"""Spectrum-preserving surrogate generation."""
