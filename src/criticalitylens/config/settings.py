@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from pathlib import Path
+import yaml
 
 from criticalitylens.config.exceptions import ConfigError
 
@@ -25,12 +26,12 @@ class PipelineConfig:
     dry_run: bool = False
 
 
-def load_config(path: Path) -> PipelineConfig:
+def load_config(path: Path | str) -> PipelineConfig:
     """Load and validate pipeline configuration from a YAML file.
 
     Parameters
     ----------
-    path : Path
+    path : Path or str
         Path to the configuration YAML file.
 
     Returns
@@ -43,4 +44,23 @@ def load_config(path: Path) -> PipelineConfig:
     ConfigError
         If the configuration cannot be loaded or is invalid.
     """
-    raise ConfigError("Not yet implemented for this configuration path")
+    p = Path(path)
+    if not p.exists():
+        raise ConfigError(f"Configuration file does not exist: {p}")
+
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+
+        if not isinstance(data, dict):
+            raise ConfigError(f"Configuration must be a YAML mapping, got {type(data).__name__}")
+
+        seed = int(data.get("seed", 42))
+        jobs = int(data.get("jobs", 1))
+        dry_run = bool(data.get("dry_run", False))
+
+        return PipelineConfig(seed=seed, jobs=jobs, dry_run=dry_run)
+    except ConfigError:
+        raise
+    except Exception as e:
+        raise ConfigError(f"Failed to load configuration from {p}: {e}") from e
