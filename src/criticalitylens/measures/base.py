@@ -123,3 +123,14 @@ def get_measure(name: str) -> type[Measure]:
     if name not in _REGISTRY:
         raise MeasureUndefined(f"Measure '{name}' is not registered")
     return _REGISTRY[name]
+
+
+def list_measures() -> list[str]:
+    """Return a sorted list of registered measure names."""
+    return sorted(_REGISTRY.keys())
+
+
+def clear_registry() -> None:
+    """Clear all registered measures (primarily for testing)."""
+    _REGISTRY.clear()
+
